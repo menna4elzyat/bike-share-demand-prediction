@@ -89,7 +89,8 @@ if st.button("Predict Demand"):
     prediction_log = model.predict(final_input)
     prediction_actual = np.expm1(prediction_log)
 
-    predicted_count = max(0, round(float(prediction_actual[0])))
+    predicted_value = np.ravel(prediction_actual)[0]
+    predicted_count = max(0, int(round(predicted_value)))
 
     st.success(f"Predicted Bike Demand: {predicted_count} bikes")
 
